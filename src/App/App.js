@@ -1,8 +1,16 @@
 import React, { Component } from 'react';
-import logo from '../logo.svg';
-import ChildComponent from './ChildComponent/ChildComponent'
-import SecondChildComponent from './SecondChildComponent/SecondChildComponent'
+// import logo from '../logo.svg';
+// import ChildComponent from './ChildComponent/ChildComponent'
+import Form from './Form/Form.component'
 import './App.css';
+
+function InputTextItems() {
+  return [
+    {title: 'Nombre', key: 'name', type: 'text', domType:'input'},
+    {title: 'Edad', key: 'age', type: 'number', domType:'input'},
+    {title: 'Edad', key: 'gnr', type: 'number', domType:'selector', options:["Hombre", "Mujer"]}
+  ]
+}
 
 export default class App extends Component {
   constructor() {
@@ -10,12 +18,14 @@ export default class App extends Component {
     this.state = {
       inputText: ""
     };
-    this.handleTyping = this.handleTyping.bind(this);
+    this.onFormSubmitted = this.onFormSubmitted.bind(this);
   }
 
-  handleTyping(event) {
+  onFormSubmitted(_, data) {
+    console.log("form submitted");
+    console.log(data);
     this.setState({
-      inputText: event.target.value
+      inputText: data
     });
   }
 
@@ -23,15 +33,12 @@ export default class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
+          <Form inputs={InputTextItems()} onFormSubmitted={this.onFormSubmitted}></Form>
+
+          {/* <img src={logo} className="App-logo" alt="logo" />
           <p>
             Edit <code>src/App.js</code> and save to reload.
-          </p>
-
-          <input type="text" value={this.state.inputText} onChange={this.handleTyping}></input>
-          <ChildComponent name={this.state.inputText}>
-            <SecondChildComponent name={this.state.inputText}></SecondChildComponent> 
-          </ChildComponent>
+          </p> */}
         </header>
       </div>
     );
