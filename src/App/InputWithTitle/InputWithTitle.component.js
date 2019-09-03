@@ -20,7 +20,10 @@ export default class InputWithTitle extends React.Component {
     render() {
         var options = [];
         if (this.props.options) {
-            options = this.props.options.map((option) => <option value={option}>{option}</option>);
+            options = this.props.options.map((option) => {
+            const optionName = `${this.props.title}_option_${option}`
+            return <option key={optionName} value={option}>{option}</option>
+        });
         }
         return (
             <div>

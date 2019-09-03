@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-// import logo from '../logo.svg';
-// import ChildComponent from './ChildComponent/ChildComponent'
 import Form from './Form/Form.component'
 import './App.css';
 
@@ -8,7 +6,7 @@ function InputTextItems() {
   return [
     {title: 'Nombre', key: 'name', type: 'text', domType:'input'},
     {title: 'Edad', key: 'age', type: 'number', domType:'input'},
-    {title: 'Edad', key: 'gnr', type: 'number', domType:'selector', options:["Hombre", "Mujer"]}
+    {title: 'Edad', key: 'gnr', domType:'selector', options:["Hombre", "Mujer"]}
   ]
 }
 
@@ -24,6 +22,7 @@ export default class App extends Component {
   onFormSubmitted(_, data) {
     console.log("form submitted");
     console.log(data);
+    // perform validation here
     this.setState({
       inputText: data
     });
@@ -34,11 +33,6 @@ export default class App extends Component {
       <div className="App">
         <header className="App-header">
           <Form inputs={InputTextItems()} onFormSubmitted={this.onFormSubmitted}></Form>
-
-          {/* <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p> */}
         </header>
       </div>
     );
