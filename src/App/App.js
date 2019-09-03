@@ -6,7 +6,7 @@ function InputTextItems() {
   return [
     {title: 'Nombre', key: 'name', type: 'text', domType:'input'},
     {title: 'Edad', key: 'age', type: 'number', domType:'input'},
-    {title: 'Edad', key: 'gnr', domType:'selector', options:["Hombre", "Mujer"]}
+    {title: 'Género', key: 'gnr', domType:'selector', options:["Hombre", "Mujer"]}
   ]
 }
 

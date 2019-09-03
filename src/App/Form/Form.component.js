@@ -3,7 +3,6 @@ import InputWithTitle from '../InputWithTitle/InputWithTitle.component';
 
 function InputList(props, callback) {
   const inputs = props.inputs;
-  console.log(inputs);
   return inputs.map((input) => <InputWithTitle title={input.title} key={input.key} id={input.key} domType={input.domType} options={input.options} onInputChanged={callback}></InputWithTitle>)
 }
 
@@ -19,7 +18,6 @@ export default class Form extends React.Component {
   }
 
   onFormSubmitted(_) {
-    console.log("onFormSubmitted");
     this.props.onFormSubmitted(this, this.state.value)
     return false;
   }
@@ -27,7 +25,6 @@ export default class Form extends React.Component {
   onInputChanged(component, _, newValue) {
     var newState = this.state.value
     newState[component.props.id] = newValue
-    console.log(newState);
     this.setState({
       value: newState
     })
