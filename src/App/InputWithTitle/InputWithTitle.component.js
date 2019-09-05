@@ -1,4 +1,5 @@
 import React from 'react';
+import { InputTypes } from './Models/Input.model'
 
 export default class InputWithTitle extends React.Component {
     constructor() {
@@ -18,28 +19,18 @@ export default class InputWithTitle extends React.Component {
     }
 
     render() {
-        var options = [];
-        if (this.props.options) {
-            options = this.props.options.map((option) => {
-            const optionName = `${this.props.title}_option_${option}`
-            return <option key={optionName} value={option}>{option}</option>
-        });
-        }
+        console.log(this.props.configModel);
         return (
             <div>
-                {this.props.title}
-                {this.props.domType !== 'selector' && <input type={this.props.type} value={this.state.inputValue} onChange={this.handleInputChange}></input>}
-                {this.props.domType === 'selector' && <select value={this.state.inputValue} onChange={this.handleInputChange}>{options}</select>}
+                {this.props.configModel.title}
+                {this.props.configModel.domType !== InputTypes.SELECTOR && <input type={this.props.configModel.type} value={this.state.inputValue} onChange={this.handleInputChange}></input>}
+                {this.props.configModel.domType === InputTypes.SELECTOR && <select value={this.state.inputValue} onChange={this.handleInputChange}>{this.props.configModel.composeHTMLOptions()}</select>}
             </div>
         );
     }
 }
 
 InputWithTitle.defaultProps = {
-    title: "Default title",
+    configModel: {},
     onInputChanged: (component, oldValue, newValue) => {},
-    id: "",
-    type: "text",
-    domType: "input",
-    options: []
-  };
+};

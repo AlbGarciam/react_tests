@@ -1,13 +1,21 @@
 import React, { Component } from 'react';
 import Form from './Form/Form.component'
+import InputText from './InputWithTitle/Models/InputText.model'
+import InputSelector from './InputWithTitle/Models/InputSelector.model'
+import SelectOption from './InputWithTitle/Models/SelectOption.model'
 import './App.css';
 
 function InputTextItems() {
-  return [
-    {title: 'Nombre', key: 'name', type: 'text', domType:'input'},
-    {title: 'Edad', key: 'age', type: 'number', domType:'input'},
-    {title: 'Género', key: 'gnr', domType:'selector', options:["Hombre", "Mujer"]}
-  ]
+  const options = [
+    new SelectOption("male", "Hombre", "Hombre"),
+    new SelectOption("female", "Mujer", "Mujer")
+  ];
+
+  return [ 
+    new InputText('Nombre', 'name', 'text'),
+    new InputText('Edad', 'age', 'number'),
+    new InputSelector('Género', 'gender', options)
+  ];
 }
 
 export default class App extends Component {

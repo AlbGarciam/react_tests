@@ -3,7 +3,7 @@ import InputWithTitle from '../InputWithTitle/InputWithTitle.component';
 
 function InputList(props, callback) {
   const inputs = props.inputs;
-  return inputs.map((input) => <InputWithTitle title={input.title} key={input.key} id={input.key} domType={input.domType} options={input.options} onInputChanged={callback}></InputWithTitle>)
+  return inputs.map((input) => <InputWithTitle configModel={input} key={input.identifier} onInputChanged={callback}></InputWithTitle>)
 }
 
 export default class Form extends React.Component {
@@ -17,7 +17,8 @@ export default class Form extends React.Component {
     this.onFormSubmitted = this.onFormSubmitted.bind(this);
   }
 
-  onFormSubmitted(_) {
+  onFormSubmitted(event) {
+    event.preventDefault();
     this.props.onFormSubmitted(this, this.state.value)
     return false;
   }
