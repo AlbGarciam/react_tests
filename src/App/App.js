@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import FormScene from './Scenes/Form.scene'
+import FormScene from './Scenes/Form/Form.scene'
 import HomeScene from './Scenes/Home.scene'
+import LoginScene from './Scenes/Login.scene'
 import { BrowserRouter as Router, Route} from "react-router-dom";
 
 export default class App extends Component {
@@ -9,8 +10,8 @@ export default class App extends Component {
       <Router>
         <div>
           <Route exact path="/" component={HomeScene} />
-          <Route exact path="/login" component={FormScene} />
-          <Route path="/topics" component={FormScene} />
+          <Route exact path="/login" component={LoginScene} />
+          <Route path="/form" component={FormScene} />
         </div>
       </Router>
     );

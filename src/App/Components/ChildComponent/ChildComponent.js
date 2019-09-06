@@ -11,7 +11,6 @@ export default class ChildComponent extends React.Component {
     }
   
     handleTyping(event) {
-      console.log(this.props.name);
       this.props.onChange(event.target.value);
       this.setState({
         value: event.target.value

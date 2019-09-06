@@ -12,14 +12,13 @@ export default class InputWithTitle extends React.Component {
     }
 
     handleInputChange(event) {
-        this.props.onInputChanged(this, this.state.inputValue, event.target.value);
+        this.props.onInputChanged(this, this.state.inputValue, event.target.value.trim());
         this.setState({
-            inputValue: event.target.value
+            inputValue: event.target.value.trim()
         });
     }
 
     render() {
-        console.log(this.props.configModel);
         return (
             <div>
                 {this.props.configModel.title}

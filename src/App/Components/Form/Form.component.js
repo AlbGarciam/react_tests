@@ -24,8 +24,8 @@ export default class Form extends React.Component {
   }
 
   onInputChanged(component, _, newValue) {
-    var newState = this.state.value
-    newState[component.props.id] = newValue
+    var newState = this.state.value;
+    newState[component.props.configModel.identifier] = newValue;
     this.setState({
       value: newState
     })
